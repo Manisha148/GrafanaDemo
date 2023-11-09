@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+<!-- {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
@@ -14,4 +14,37 @@
         {{ _('Forgot Your Password?') }}
         <a href="{{ url_for('auth.reset_password_request') }}">{{ _('Click to Reset It') }}</a>
     </p>
+{% endblock %} -->
+
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block styles %}
+{{ super() }}
+
+<style> body { background: linear-gradient(to right, #00c6ff, #0072ff); } .login-box { margin: 100px auto; width: 400px; padding: 40px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); } h1 { text-align: center; margin-bottom: 30px; } .btn-custom { background: #0072ff; border-color: #0072ff; color: #fff; } .btn-custom:hover { background: #0062cc; border-color: #005cbf; } a { color: #0072ff; } </style>
+{% endblock %}
+
+{% block app_content %}
+
+<div class="login-box"> <h1>{{ _('Sign In') }}</h1>
+Copy code
+
+<div class="row">
+  <div class="col-md-12">
+    {{ wtf.quick_form(form, button_map={'submit':'custom'}) }}
+  </div>
+</div>
+
+<br>
+
+<p>{{ _('New User?') }}
+  <a href="{{ url_for('auth.register') }}">{{ _('Click to Register!') }}</a>
+</p>
+
+<p>
+  {{ _('Forgot Your Password?') }}
+  <a href="{{ url_for('auth.reset_password_request') }}">{{ _('Click to Reset It') }}</a>
+</p>
+</div>
 {% endblock %}
